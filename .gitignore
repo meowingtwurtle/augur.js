@@ -16,3 +16,5 @@ lib
 link
 qtest.js
 nuke
+.idea
+*.iml
