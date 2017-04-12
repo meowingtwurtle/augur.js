@@ -6,7 +6,11 @@
 "use strict";
 
 var BigNumber = require("bignumber.js");
+var LedgerEthereum = require("ethereumjs-ledger").LedgerEthereum;
+var LedgerEthereumNetwork = require("ethereumjs-ledger").Network;
+var LedgerBrowserConnectionFactory = require("ethereumjs-ledger").BrowserLedgerConnectionFactory;
 var keythereum = require("keythereum");
+var pify = require("pify");
 var ROUNDS = require("./constants").ROUNDS;
 
 BigNumber.config({
@@ -44,6 +48,12 @@ function Augur() {
   this.create = require("./create");
   this.filters = require("./filters");
   this.format = require("./format");
+  // TODO: make these functions prompt the user to interact with their ledger (e.g., plug it in, open the Ethereum app, change app settings on device) and then call the callback once the user indicates they are done
+  var connectLedgerRequest = function (callback) { callback(new Error("connectLedgerRequest not implemented"), undefined); };
+  var openEthereumAppRequest = function (callback) { callback(new Error("openEthereumAppRequest not implemented"), undefined); };
+  var switchLedgerModeRequest = function (callback) { callback(new Error("switchLedgerModeRequest not implemented"), undefined); };
+  var enableContractSupportRequest = function (callback) { callback(new Error("enableContractSupportRequest not implemented"), undefined); };
+  this.ledger = new LedgerEthereum(LedgerEthereumNetwork.Test, LedgerBrowserConnectionFactory, pify(connectLedgerRequest), pify(openEthereumAppRequest), pify(switchLedgerModeRequest), pify(enableContractSupportRequest));
   this.logs = require("./logs");
   this.markets = require("./markets");
   this.reporting = require("./reporting");

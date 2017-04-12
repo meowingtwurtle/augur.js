@@ -24,10 +24,12 @@
     "chalk": "1.1.1",
     "clone": "1.0.2",
     "ethereumjs-connect": "4.1.2",
+    "ethereumjs-ledger": "2.1.2",
     "ethrpc": "4.1.2",
     "immutable-delete": "1.0.1",
     "keythereum": "0.5.1",
     "lodash.assign": "4.2.0",
+    "pify": "2.3.0",
     "request": "2.74.0",
     "uuid": "3.0.0",
     "uuid-parse": "1.0.0"
