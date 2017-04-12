@@ -8,6 +8,10 @@
 var NODE_JS = (typeof module !== "undefined") && process && !process.browser;
 
 var BigNumber = require("bignumber.js");
+var LedgerEthereum = require("ethereumjs-ledger").LedgerEthereum;
+var LedgerEthereumNetwork = require("ethereumjs-ledger").Network;
+var LedgerBrowserConnectionFactory = require("ethereumjs-ledger").BrowserLedgerConnectionFactory;
+var pify = require("pify");
 
 var modules = [
   require("./modules/connect"),
@@ -79,6 +83,12 @@ function Augur() {
   this.errors = this.rpc.errors;
   this.abi.debug = this.options.debug.abi;
   this.rpc.debug = this.options.debug;
+  // TODO: make these functions prompt the user to interact with their ledger (e.g., plug it in, open the Ethereum app, change app settings on device) and then call the callback once the user indicates they are done
+  var connectLedgerRequest = function (callback) { callback(new Error("connectLedgerRequest not implemented"), undefined); };
+  var openEthereumAppRequest = function (callback) { callback(new Error("openEthereumAppRequest not implemented"), undefined); };
+  var switchLedgerModeRequest = function (callback) { callback(new Error("switchLedgerModeRequest not implemented"), undefined); };
+  var enableContractSupportRequest = function (callback) { callback(new Error("enableContractSupportRequest not implemented"), undefined); };
+  this.ledger = new LedgerEthereum(LedgerEthereumNetwork.Test, LedgerBrowserConnectionFactory, pify(connectLedgerRequest), pify(openEthereumAppRequest), pify(switchLedgerModeRequest), pify(enableContractSupportRequest));
 
   // Load submodules
   for (i = 0, len = modules.length; i < len; ++i) {
