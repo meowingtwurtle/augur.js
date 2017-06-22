@@ -271,16 +271,5 @@ module.exports = function () {
       this.account = {};
       augur.rpc.clear();
     },
-
-    loginWithLedger: function (callback) {
-      augur.ledger.getAddressByBip44Index().then(function (address) {
-        this.account = {
-          address: address
-        };
-        callback(clone(undefined, this.account));
-      }).catch(function (error) {
-        callback(error, undefined);
-      });
-    }
   };
 };

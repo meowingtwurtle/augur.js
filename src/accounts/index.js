@@ -14,6 +14,7 @@ module.exports = {
   getRegisterBlockNumber: require("./get-register-block-number"),
   importAccount: require("./import-account"),
   login: require("./login"),
+  loginWithLedger: require("./login-with-ledger").bind(this),
   loginWithMasterKey: require("./login-with-master-key"),
   logout: require("./logout"),
   register: require("./register")

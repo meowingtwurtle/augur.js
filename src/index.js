@@ -37,7 +37,7 @@ function Augur() {
     loadZeroVolumeMarkets: true
   };
   this.abi = require("augur-abi");
-  this.accounts = require("./accounts");
+  this.accounts = require("./accounts").bind(this);
   this.api = require("./api")();
   this.generateContractAPI = require("./api").generateContractAPI;
   this.assets = require("./assets");
