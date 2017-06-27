@@ -429,7 +429,10 @@ describe("logs.buildTopicsList", function () {
     eventInputs: [{ name: 'amount', indexed: true }],
     params: { amount: '50' },
     assertions: function (o) {
-      assert.deepEqual(o, [ '0x59193f204bd4754cff0e765b9ee9157305fb373586ec5d680b49e6341ef922a6' , '0x0000000000000000000000000000000000000000000000000000000000000050']);
+      assert.deepEqual(o, [
+        contractsAPI.events.completeSets_logReturn.signature,
+        '0x0000000000000000000000000000000000000000000000000000000000000050'
+      ]);
     }
   });
 
@@ -439,8 +442,11 @@ describe("logs.buildTopicsList", function () {
     eventInputs: [{ name: 'amount', indexed: true }, { name: 'unindexed', indexed: false }, { name: 'shares', indexed: true } ],
     params: { amount: '50', unindexed: 'this shouldnt be in the topics array out', shares: '10' },
     assertions: function (o) {
-      assert.deepEqual(o, [ '0x59193f204bd4754cff0e765b9ee9157305fb373586ec5d680b49e6341ef922a6' , '0x0000000000000000000000000000000000000000000000000000000000000050',
-      '0x0000000000000000000000000000000000000000000000000000000000000010']);
+      assert.deepEqual(o, [
+        contractsAPI.events.completeSets_logReturn.signature,
+        '0x0000000000000000000000000000000000000000000000000000000000000050',
+        '0x0000000000000000000000000000000000000000000000000000000000000010'
+      ]);
     }
   });
 
@@ -450,7 +456,7 @@ describe("logs.buildTopicsList", function () {
     eventInputs: [],
     params: {},
     assertions: function (o) {
-      assert.deepEqual(o, [ '0x59193f204bd4754cff0e765b9ee9157305fb373586ec5d680b49e6341ef922a6']);
+      assert.deepEqual(o, [ contractsAPI.events.completeSets_logReturn.signature ]);
     }
   });
 });
