@@ -21,6 +21,7 @@ var fork = require("./fork");
 var approval = require("./approve-account");
 var listMarketOrders = require("./list-market-orders");
 var fillMarketOrders = require("./fill-market-orders");
+var gasEstimates = require("./gas-estimates");
 
 var NETWORKS = ["aura", "clique", "environment", "rinkeby", "ropsten"];
 var methods = {
@@ -62,6 +63,9 @@ var methods = {
   },
   "fill-market-orders": {
     method: fillMarketOrders,
+  },
+  "gas-estimates": {
+    method: gasEstimates,
   },
 };
 
