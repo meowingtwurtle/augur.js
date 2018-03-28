@@ -70,8 +70,7 @@ function fork(augur, params, auth, callback) {
       userAuth = getPrivateKeyFromString(process.env.REPORTER_PRIVATE_KEY);
     } else if (paramArray[2] !== undefined) {
       userAuth = getPrivateKeyFromString(paramArray[2]);
-    }
-    if (userAuth === null) {
+    } else {
       userAuth = auth;
     }
 
