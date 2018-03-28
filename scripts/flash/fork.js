@@ -60,7 +60,7 @@ function help(callback) {
 }
 
 function fork(augur, params, auth, callback) {
-  if (!params || params === "help" || params.split(",").length < 2) {
+  if (!params || params === "help" || params.split(",").length < 1) {
     help(callback);
   } else {
     var paramArray = params.split(",");
